@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "django-render"
+version = "0.1.0"
+description = ""
+authors = ["Arvind-4 <lordarvindthegamer@gmail.com>"]
+readme = "README.md"
+packages = [{include = "django_render"}]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+Django = ">=3.2,<3.3"
+whitenoise = "^6.4.0"
+psycopg2-binary = "^2.9.5"
+python-decouple = "^3.8"
+gunicorn = "^20.1.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
