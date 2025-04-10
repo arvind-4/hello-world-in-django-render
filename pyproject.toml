@@ -1,20 +1,17 @@
-[tool.poetry]
-name = "django-render"
+[project]
+name = "hello-world-in-django-render"
 version = "0.1.0"
-description = ""
-authors = ["Arvind-4 <lordarvindthegamer@gmail.com>"]
+description = "A hello world django project in render"
 readme = "README.md"
-packages = [{include = "django_render"}]
+requires-python = ">=3.12"
+dependencies = [
+    "django>=3.2,<3.3",
+    "psycopg2-binary>=2.9.10",
+    "python-decouple>=3.8",
+    "whitenoise>=6.9.0",
+]
 
-[tool.poetry.dependencies]
-python = "^3.9"
-Django = ">=3.2,<3.3"
-whitenoise = "^6.4.0"
-psycopg2-binary = "^2.9.5"
-python-decouple = "^3.8"
-gunicorn = "^20.1.0"
-
-
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+[dependency-groups]
+dev = [
+    "ruff>=0.11.4",
+]
