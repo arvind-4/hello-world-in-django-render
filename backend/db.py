@@ -1,20 +1,21 @@
-# Database
-# https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-
 import pathlib
 from backend.env import config
 
-DATABASE_DIR = pathlib.Path(__file__).parent.parent
+from django.conf import settings
+
+BASE_DIR = getattr(settings, "BASE_DIR")
 
 if config("DJANGO_DEBUG", cast=bool):
+    print("Using SQLite3 database for development.")
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': DATABASE_DIR / 'db.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
         }
     }
 
 else:
+    print("Using PostgreSQL database for production.")
     POSTGRES_USER = config("POSTGRES_USER", default=None)
     POSTGRES_PASSWORD = config("POSTGRES_PASSWORD", default=None)
     POSTGRES_DB = config("POSTGRES_DB", default=None)
@@ -34,6 +35,8 @@ else:
     ])
 
     if POSTGRES_DB_IS_AVAIL:
+        print("PostgreSQL database is available.")
+        print("Using PostgreSQL database.")
         DATABASES = {
             "default": {
                 "ENGINE": "django.db.backends.postgresql",
